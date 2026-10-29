@@ -22,6 +22,7 @@ import {
   DollarSign,
   ArrowRight,
   Filter,
+  Database,
 } from 'lucide-react';
 import { PayPalDisputeRecord } from '../services/paypalService';
 
@@ -46,8 +47,8 @@ export const AGGridDisputeLedger: React.FC<AGGridDisputeLedgerProps> = ({
     () => [
       {
         field: 'id',
-        headerName: 'Dispute / Claim ID',
-        width: 170,
+        headerName: 'Dispute ID',
+        width: 140,
         pinned: 'left',
         cellRenderer: (params: ICellRendererParams<PayPalDisputeRecord>) => (
           <div className="flex items-center gap-1.5 text-[#00dce6] font-medium">
@@ -58,7 +59,7 @@ export const AGGridDisputeLedger: React.FC<AGGridDisputeLedgerProps> = ({
       {
         field: 'transactionId',
         headerName: 'PayPal TxID',
-        width: 180,
+        width: 155,
         cellRenderer: (params: ICellRendererParams<PayPalDisputeRecord>) => (
           <div className="text-neutral-300">
             <code>{params.value}</code>
@@ -67,8 +68,8 @@ export const AGGridDisputeLedger: React.FC<AGGridDisputeLedgerProps> = ({
       },
       {
         field: 'orderNumber',
-        headerName: 'Order #',
-        width: 120,
+        headerName: 'Order',
+        width: 95,
         cellRenderer: (params: ICellRendererParams<PayPalDisputeRecord>) => (
           <span className="text-neutral-400">{params.value}</span>
         ),
@@ -76,7 +77,7 @@ export const AGGridDisputeLedger: React.FC<AGGridDisputeLedgerProps> = ({
       {
         field: 'customerName',
         headerName: 'Customer',
-        width: 150,
+        width: 130,
         cellRenderer: (params: ICellRendererParams<PayPalDisputeRecord>) => (
           <span className="text-white font-medium">{params.value}</span>
         ),
@@ -84,14 +85,14 @@ export const AGGridDisputeLedger: React.FC<AGGridDisputeLedgerProps> = ({
       {
         field: 'amount',
         headerName: 'Amount',
-        width: 110,
-        valueFormatter: (params) => `$${params.value.toFixed(2)}`,
+        width: 95,
+        valueFormatter: (params) => `$${params.value?.toFixed(2)}`,
         cellClass: 'text-white font-semibold',
       },
       {
         field: 'claimReason',
         headerName: 'Claim Reason',
-        width: 160,
+        width: 140,
         cellRenderer: (params: ICellRendererParams<PayPalDisputeRecord>) => {
           const reason = params.value;
           const label =
@@ -101,6 +102,8 @@ export const AGGridDisputeLedger: React.FC<AGGridDisputeLedgerProps> = ({
               ? 'Damaged Transit'
               : reason === 'FRAUD_SUSPECTED'
               ? 'Suspected Fraud'
+              : reason === 'PROMPT_INJECTION'
+              ? 'Prompt Injection'
               : 'Not As Described';
 
           return (
@@ -112,8 +115,8 @@ export const AGGridDisputeLedger: React.FC<AGGridDisputeLedgerProps> = ({
       },
       {
         field: 'inspectionGrade',
-        headerName: 'AI Vision Verdict',
-        width: 190,
+        headerName: 'Vision Verdict',
+        width: 180,
         cellRenderer: (params: ICellRendererParams<PayPalDisputeRecord>) => {
           const grade = params.value || '';
           const isPassed = grade.includes('Grade A+');
@@ -121,7 +124,7 @@ export const AGGridDisputeLedger: React.FC<AGGridDisputeLedgerProps> = ({
 
           return (
             <span
-              className={`px-2 py-0.5 rounded text-xs inline-flex items-center gap-1 ${
+              className={`px-2.5 py-0.5 rounded text-xs inline-flex items-center gap-1 font-medium ${
                 isPassed
                   ? 'bg-cyan-950/40 text-cyan-300 border border-cyan-500/30'
                   : isDefect
@@ -129,7 +132,7 @@ export const AGGridDisputeLedger: React.FC<AGGridDisputeLedgerProps> = ({
                   : 'bg-rose-950/40 text-rose-300 border border-rose-500/30'
               }`}
             >
-              <CheckCircle2 className="w-3 h-3" />
+              <CheckCircle2 className="w-3 h-3 shrink-0" />
               <span>{grade}</span>
             </span>
           );
@@ -137,8 +140,8 @@ export const AGGridDisputeLedger: React.FC<AGGridDisputeLedgerProps> = ({
       },
       {
         field: 'disputeStatus',
-        headerName: 'PayPal Settlement Status',
-        width: 220,
+        headerName: 'Settlement Status',
+        width: 185,
         cellRenderer: (params: ICellRendererParams<PayPalDisputeRecord>) => {
           const status = params.value;
           const isRefund = status === 'RESOLVED_REFUND';
@@ -146,7 +149,7 @@ export const AGGridDisputeLedger: React.FC<AGGridDisputeLedgerProps> = ({
 
           return (
             <span
-              className={`px-2.5 py-1 rounded-full text-xs font-semibold inline-flex items-center gap-1.5 ${
+              className={`px-2.5 py-0.5 rounded-full text-xs font-semibold inline-flex items-center gap-1.5 ${
                 isRefund
                   ? 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30'
                   : isExchange
@@ -172,26 +175,26 @@ export const AGGridDisputeLedger: React.FC<AGGridDisputeLedgerProps> = ({
       },
       {
         field: 'paypalFeeSaved',
-        headerName: 'Dispute Fee Saved',
-        width: 150,
+        headerName: 'Fee Saved',
+        width: 120,
         cellRenderer: (params: ICellRendererParams<PayPalDisputeRecord>) => (
           <span className="text-emerald-400 font-medium">
-            +${params.value.toFixed(2)} (Waived)
+            +${params.value?.toFixed(2)}
           </span>
         ),
       },
       {
         field: 'latencyMs',
-        headerName: 'Resolution Latency',
-        width: 150,
+        headerName: 'Latency',
+        width: 105,
         cellRenderer: (params: ICellRendererParams<PayPalDisputeRecord>) => (
-          <span className="text-cyan-300">{params.value}ms (Nova Lite)</span>
+          <span className="text-cyan-300 text-xs">{params.value}ms</span>
         ),
       },
       {
         field: 'timestamp',
-        headerName: 'Recorded At',
-        width: 160,
+        headerName: 'Recorded',
+        width: 130,
         cellClass: 'text-neutral-400 text-xs',
       },
     ],
@@ -209,7 +212,10 @@ export const AGGridDisputeLedger: React.FC<AGGridDisputeLedgerProps> = ({
   );
 
   const onGridReady = useCallback((params: GridReadyEvent) => {
-    params.api.sizeColumnsToFit();
+    // Only fit columns if container is sufficiently wide
+    if (window.innerWidth >= 1400) {
+      params.api.sizeColumnsToFit();
+    }
   }, []);
 
   const handleExportCsv = () => {
@@ -225,81 +231,15 @@ export const AGGridDisputeLedger: React.FC<AGGridDisputeLedgerProps> = ({
 
   return (
     <div className="space-y-4">
-      {/* Header Metric Strip */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="rounded-xl bg-[#13141a] border border-white/[0.08] p-5">
-          <div className="flex items-center justify-between text-neutral-400">
-            <span className="text-xs text-neutral-300 font-medium">
-              Autonomous Dispute Resolution
-            </span>
-            <ShieldCheck className="w-4 h-4 text-[#00dce6]" />
-          </div>
-          <div className="my-2 flex items-baseline gap-1.5">
-            <span className="font-display text-3xl font-bold text-white">
-              {((resolvedCount / Math.max(records.length, 1)) * 100).toFixed(1)}%
-            </span>
-            <span className="text-xs text-neutral-400">
-              ({resolvedCount} / {records.length})
-            </span>
-          </div>
-          <div className="text-xs text-emerald-400 flex items-center gap-1">
-            <CheckCircle2 className="w-3.5 h-3.5" /> Zero Chargeback Penalties
-          </div>
-        </div>
-
-        <div className="rounded-xl bg-[#13141a] border border-white/[0.08] p-5">
-          <div className="flex items-center justify-between text-neutral-400">
-            <span className="text-xs text-neutral-300 font-medium">
-              PayPal Dispute Fees Saved
-            </span>
-            <DollarSign className="w-4 h-4 text-emerald-400" />
-          </div>
-          <div className="my-2 flex items-baseline gap-1.5">
-            <span className="font-display text-3xl font-bold text-emerald-400">
-              ${totalSaved.toFixed(2)}
-            </span>
-            <span className="text-xs text-neutral-400">vs $20 standard fee</span>
-          </div>
-          <div className="text-xs text-neutral-400">Pre-empted via Direct Settlement</div>
-        </div>
-
-        <div className="rounded-xl bg-[#13141a] border border-white/[0.08] p-5">
-          <div className="flex items-center justify-between text-neutral-400">
-            <span className="text-xs text-neutral-300 font-medium">
-              Average Adjudication Latency
-            </span>
-            <RefreshCw className="w-4 h-4 text-[#00dce6]" />
-          </div>
-          <div className="my-2 flex items-baseline gap-1.5">
-            <span className="font-display text-3xl font-bold text-white">180ms</span>
-            <span className="text-xs text-neutral-400">Amazon Nova Lite</span>
-          </div>
-          <div className="text-xs text-cyan-300">Synchronous PayPal API Webhook</div>
-        </div>
-
-        <div className="rounded-xl bg-[#13141a] border border-white/[0.08] p-5">
-          <div className="flex items-center justify-between text-neutral-400">
-            <span className="text-xs text-neutral-300 font-medium">
-              PayPal API Gateway Status
-            </span>
-            <ExternalLink className="w-4 h-4 text-[#00dce6]" />
-          </div>
-          <div className="my-2 flex items-baseline gap-1.5">
-            <span className="font-display text-3xl font-bold text-[#00dce6]">Sandbox Live</span>
-          </div>
-          <div className="text-xs text-neutral-400">api-m.sandbox.paypal.com</div>
-        </div>
-      </div>
-
       {/* Grid Controls Bar */}
       <div className="rounded-xl bg-[#13141a] border border-white/[0.08] p-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
-        <div className="flex items-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#00dce6]" />
+        <div className="flex items-center gap-2.5">
+          <Database className="w-4 h-4 text-[#00dce6]" />
           <h2 className="font-display text-base font-semibold text-white tracking-tight">
-            AG Grid Enterprise · PayPal Dispute & Settlement Ledger
+            AG Grid Enterprise · PayPal Dispute &amp; Settlement Ledger
           </h2>
           <span className="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] text-neutral-400">
-            Live Feed ({records.length} records)
+            {records.length} Settled Records
           </span>
         </div>
 

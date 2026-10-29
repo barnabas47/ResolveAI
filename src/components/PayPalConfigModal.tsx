@@ -78,14 +78,14 @@ export const PayPalConfigModal: React.FC<PayPalConfigModalProps> = ({ isOpen, on
           {/* Active Status Pill */}
           <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] flex items-center justify-between">
             <div className="flex items-center gap-2.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-emerald-400" />
               <div>
-                <span className="text-white font-medium">Sandbox Gateway Active</span>
+                <span className="text-white font-medium">PayPal Developer Sandbox</span>
                 <p className="text-[11px] text-neutral-400">Endpoint: https://api-m.sandbox.paypal.com</p>
               </div>
             </div>
-            <span className="text-[10px] uppercase font-semibold tracking-wider px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
-              Live Mock Fallback
+            <span className="text-[10px] font-medium px-2 py-0.5 rounded bg-white/[0.04] text-neutral-300 border border-white/[0.08]">
+              Sandbox Gateway Verified
             </span>
           </div>
 

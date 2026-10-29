@@ -10,6 +10,7 @@ interface NavbarProps {
   onSelectScenario: (id: ScenarioId) => void;
   onResetFlow: () => void;
   isProcessingDemo: boolean;
+  onOpenInspector?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -19,6 +20,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onSelectScenario,
   onResetFlow,
   isProcessingDemo,
+  onOpenInspector,
 }) => {
   const [isConfigOpen, setIsConfigOpen] = useState(false);
 
@@ -49,22 +51,19 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* System Status Indicators */}
             <div className="hidden 2xl:flex items-center gap-2 text-xs text-neutral-300">
               <div className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.06]">
-                <span className="w-2 h-2 rounded-full bg-[#00dce6]"></span>
-                <span className="text-white">Nova Lite: ONLINE</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00dce6]"></span>
+                <span className="text-neutral-300 font-medium">Nova Lite 1.0</span>
               </div>
               <button
                 onClick={() => setIsConfigOpen(true)}
-                className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/20 text-emerald-400 transition-colors"
-                title="Click to view or edit PayPal Sandbox API configuration"
+                className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] text-neutral-200 transition-colors"
+                title="Inspect PayPal Sandbox API configuration & cURL snippets"
               >
-                <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse"></span>
-                <span>PayPal Sandbox: CONNECTED</span>
-                <Settings className="w-3 h-3 ml-1 text-emerald-400/80" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#10b981]"></span>
+                <span className="text-white font-medium">PayPal Sandbox</span>
+                <span className="text-[10px] text-neutral-400">api-m.sandbox</span>
+                <Settings className="w-3 h-3 ml-0.5 text-neutral-400" />
               </button>
-              <div className="flex items-center gap-1 px-2 py-1 text-neutral-400">
-                <Database className="w-3 h-3 text-neutral-500" />
-                <span>api-m.sandbox.paypal.com</span>
-              </div>
             </div>
           </div>
 
@@ -98,14 +97,15 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Right Status */}
         <div className="flex items-center gap-3 shrink-0">
-          <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.04] border border-white/[0.08] text-xs text-[#00dce6]">
-            <Zap className="w-3.5 h-3.5 text-[#00dce6]" />
-            <span>180ms avg</span>
-          </div>
-          <div className="hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.04] text-xs text-neutral-300">
-            <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
-            <span>Amazon Nova Lite</span>
-          </div>
+          <button
+            onClick={onOpenInspector}
+            className="min-h-[36px] flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] text-xs text-neutral-300 transition-colors"
+            title="Inspect AI telemetry & execution steps"
+          >
+            <Cpu className="w-3.5 h-3.5 text-[#00dce6]" />
+            <span className="hidden sm:inline font-medium">Nova Lite</span>
+            <span className="text-[#00dce6]">180ms</span>
+          </button>
         </div>
       </div>
 
@@ -160,10 +160,10 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="flex items-center gap-2 shrink-0">
           <button
             onClick={() => setIsConfigOpen(true)}
-            className="2xl:hidden min-h-[36px] flex items-center gap-1.5 px-2.5 py-1.5 rounded bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 text-xs transition-colors border border-emerald-500/20"
+            className="2xl:hidden min-h-[36px] flex items-center gap-1.5 px-2.5 py-1.5 rounded bg-white/[0.04] hover:bg-white/[0.08] text-neutral-200 text-xs transition-colors border border-white/[0.08]"
             title="Configure PayPal Sandbox Keys"
           >
-            <Settings className="w-3.5 h-3.5" />
+            <Settings className="w-3.5 h-3.5 text-neutral-400" />
             <span className="hidden sm:inline">PayPal Sandbox</span>
           </button>
           <button

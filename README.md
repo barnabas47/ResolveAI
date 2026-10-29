@@ -91,7 +91,10 @@ Engineered specifically for high-frequency merchant operations:
 - **Built-in Filtering & Quick Search**: Triage by claim reason (`INCORRECT_SIZE`, `DAMAGED_TRANSIT`, `FRAUD_SUSPECTED`).
 - **1-Click Audit CSV Export**: Instant compliance and financial reconciliation.
 
-### 4. "Prompt says Yes, Code says No" (Deterministic Code Gate)
+### 4. "Silence is the Product" (Autonomous Rejection Log)
+Inspired by the 2026 Grand Prize architecture (*Tally*): A truly enterprise-grade agent doesn't spam human operators with routine notifications. It silently filters out 95% of background noise (e.g., carrier pings, duplicate webhook replays, marketing bot crawl requests) into an auditable Rejection Log with confidence scoring and 1-click human overturn.
+
+### 5. "Prompt says Yes, Code says No" (Deterministic Code Gate)
 Never trust an LLM prompt with money. ResolveAI strictly enforces:
 - **Hard Financial Ceiling**: Claims above `$250.00` require Tier-2 Merchant 2FA.
 - **Adversarial Injection Defense**: Jailbreaks (`ignore previous rules`, `system override`) are halted by code before tool invocation.

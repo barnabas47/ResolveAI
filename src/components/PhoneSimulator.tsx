@@ -223,21 +223,21 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
               <div className="min-w-0">
                 <div className="flex items-center gap-1.5">
                   <span className="font-semibold text-xs text-white truncate">
-                    RetailReturn Assistant
+                    PayPal ResolveAI
                   </span>
                   <ShieldCheck className="w-3.5 h-3.5 text-[#00dce6]" />
                 </div>
                 <span className="text-xs text-neutral-400 block truncate">
                   {currentChannel === 'whatsapp'
-                    ? 'WhatsApp Verified • Bedrock Active'
+                    ? 'Verified Merchant Account • PayPal Protected'
                     : currentChannel === 'rcs'
-                    ? 'Google Jibe RCS • Rich Cards Active'
-                    : 'AWS CDS EUM Shortcode #88192'}
+                    ? 'RCS Business Messaging • Verified'
+                    : 'Merchant SMS Gateway #88192'}
                 </span>
               </div>
             </div>
-            <div className="px-2 py-0.5 rounded bg-white/[0.06] text-xs text-neutral-400">
-              Live
+            <div className="px-2 py-0.5 rounded bg-white/[0.04] text-[11px] text-neutral-400">
+              Verified
             </div>
           </div>
 
@@ -245,8 +245,8 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
           <div className="flex-1 overflow-y-auto p-4 space-y-3.5 bg-[#0c0c10] scrollbar-none">
             {/* Encryption notice */}
             <div className="text-center">
-              <span className="text-xs text-neutral-400 bg-white/[0.04] px-3 py-0.5 rounded-full">
-                Today • Verified AWS CDS Session
+              <span className="text-[11px] text-neutral-400 bg-white/[0.04] px-3 py-0.5 rounded-full">
+                End-to-end encrypted • PayPal Seller Protection Active
               </span>
             </div>
 

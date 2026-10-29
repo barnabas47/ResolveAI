@@ -7,6 +7,7 @@ import { ExecutionGraph } from './components/ExecutionGraph';
 import { PhoneSimulator } from './components/PhoneSimulator';
 import { DeepTraceView } from './components/DeepTraceView';
 import { AGGridDisputeLedger } from './components/AGGridDisputeLedger';
+import { RejectionLog } from './components/RejectionLog';
 import { LiveAIInspector } from './components/vault/live-ai-inspector';
 import { VoiceCommandPill } from './components/vault/voice-command-pill';
 import { SCENARIOS, MOCK_TRACE_EVENTS } from './data/mockData';
@@ -25,6 +26,7 @@ export function App() {
   const [activeScenarioId, setActiveScenarioId] = useState<ScenarioId>('size_exchange');
   const [currentChannel, setCurrentChannel] = useState<ChannelId>('whatsapp');
   const [isProcessingDemo, setIsProcessingDemo] = useState(false);
+  const [isInspectorOpen, setIsInspectorOpen] = useState(false);
   const [traceEvents, setTraceEvents] = useState<WebhookTraceEvent[]>(MOCK_TRACE_EVENTS);
   const [disputeRecords, setDisputeRecords] = useState<PayPalDisputeRecord[]>(INITIAL_PAYPAL_DISPUTES);
 
@@ -135,6 +137,7 @@ export function App() {
         onSelectScenario={handleSelectScenario}
         onResetFlow={handleResetFlow}
         isProcessingDemo={isProcessingDemo}
+        onOpenInspector={() => setIsInspectorOpen(true)}
       />
 
       {/* Main Container */}
@@ -144,14 +147,14 @@ export function App() {
           <div className="relative z-10 flex flex-col xl:flex-row xl:items-end justify-between gap-6">
             <div className="max-w-4xl space-y-2">
               <div className="flex flex-wrap items-center gap-2 text-xs">
-                <span className="px-2.5 py-0.5 rounded bg-[#00dce6]/10 border border-[#00dce6]/30 text-[#00dce6] uppercase tracking-wide flex items-center gap-1.5 font-semibold">
+                <span className="px-2.5 py-0.5 rounded bg-white/[0.04] border border-white/[0.08] text-[#00dce6] tracking-wide flex items-center gap-1.5 font-medium">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#00dce6]" />
                   PayPal Agentic Commerce Protocol
                 </span>
-                <span className="text-neutral-600">/</span>
-                <span className="text-neutral-400">Session: <code className="font-mono text-neutral-300">#{scenario.sessionCode}</code></span>
-                <span className="text-neutral-600">/</span>
-                <span className="text-cyan-300">PayPal Sandbox Active</span>
+                <span className="text-neutral-600">•</span>
+                <span className="text-neutral-400">Session <code className="font-mono text-neutral-300">#{scenario.sessionCode}</code></span>
+                <span className="text-neutral-600">•</span>
+                <span className="text-neutral-300">Pre-Dispute Mediation Engine</span>
               </div>
 
               <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
@@ -180,14 +183,14 @@ export function App() {
           </div>
         </section>
 
+        {/* High-Level Executive KPI Bento Row (Full Width, Zero Collision) */}
+        <BentoMetrics scenarioId={activeScenarioId} />
+
         {/* Tab Content */}
         {activeTab === 'operations' ? (
           <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
             {/* LEFT 7 COLS: Enterprise Logistics Command Center */}
             <div className="xl:col-span-7 flex flex-col gap-6 min-w-0">
-              {/* 4-Card Bento Metrics */}
-              <BentoMetrics scenarioId={activeScenarioId} />
-
               {/* Bedrock AgentCore Execution Graph */}
               <ExecutionGraph
                 nodes={scenario.traceNodes}
@@ -231,6 +234,7 @@ export function App() {
           /* AG Grid & Telemetry Tab */
           <div className="space-y-6">
             <AGGridDisputeLedger records={disputeRecords} />
+            <RejectionLog />
             <DeepTraceView events={traceEvents} />
           </div>
         )}
@@ -239,16 +243,18 @@ export function App() {
       {/* Sonner Dark Toast Notifications */}
       <Toaster position="top-right" theme="dark" richColors />
 
-      {/* Live AI Telemetry Inspector from Vault */}
+      {/* Live AI Telemetry Inspector Drawer */}
       <LiveAIInspector
-        modelName="Amazon Nova Lite (Bedrock) • Multimodal"
+        isOpen={isInspectorOpen}
+        onClose={() => setIsInspectorOpen(false)}
+        modelName="Amazon Nova Lite (Bedrock) · Multimodal"
         latencyMs={180}
         tokensPerSec={185}
         steps={[
-          { name: 'AWS CDS Inbound Webhook', durationMs: 14, status: 'done', detail: 'Received WhatsApp payload' },
+          { name: 'AWS CDS Inbound Webhook', durationMs: 14, status: 'done', detail: 'Received customer claim payload' },
           { name: 'Nova Lite Multimodal Inspection', durationMs: 95, status: 'done', detail: 'Condition Grade A+ verified' },
-          { name: 'ERP Inventory Reserve Hold', durationMs: 45, status: 'done', detail: 'Reserved ATL-04 SKU' },
-          { name: 'RCS Dynamic Rich Card Push', durationMs: 26, status: 'done', detail: 'Dispatched Google Jibe Card' },
+          { name: 'ERP Inventory Reserve Hold', durationMs: 45, status: 'done', detail: 'Reserved replacement SKU' },
+          { name: 'PayPal Orders Pre-Authorization', durationMs: 26, status: 'done', detail: 'Executed POST /v2/checkout/orders' },
         ]}
       />
     </div>

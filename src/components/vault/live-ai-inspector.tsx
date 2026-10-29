@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Activity, Terminal, Cpu, CheckCircle2, ChevronDown, ChevronUp, Zap } from 'lucide-react';
+import { Activity, Terminal, Cpu, CheckCircle2, X, Zap, ShieldCheck } from 'lucide-react';
 
-interface TraceStep {
+export interface TraceStep {
   name: string;
   durationMs: number;
   status: 'done' | 'running' | 'idle';
@@ -12,6 +12,8 @@ interface TraceStep {
 }
 
 interface LiveAIInspectorProps {
+  isOpen: boolean;
+  onClose: () => void;
   modelName?: string;
   latencyMs?: number;
   tokensPerSec?: number;
@@ -19,100 +21,116 @@ interface LiveAIInspectorProps {
 }
 
 export const LiveAIInspector: React.FC<LiveAIInspectorProps> = ({
-  modelName = 'Gemini 3.8 Flash • AgentCore',
-  latencyMs = 48,
-  tokensPerSec = 112,
+  isOpen,
+  onClose,
+  modelName = 'Amazon Nova Lite (Bedrock) · Multimodal',
+  latencyMs = 180,
+  tokensPerSec = 185,
   steps = [
-    { name: 'Intent Classifier', durationMs: 12, status: 'done', detail: 'Identified: Real-time Camera Stream Analysis' },
-    { name: 'MCP Tool Invocation', durationMs: 24, status: 'done', detail: 'Called: firetv_os_stream_sync()' },
-    { name: 'Context RAG Retrieval', durationMs: 8, status: 'done', detail: 'Fetched 3 temporal context chunks' },
-    { name: 'Streaming Response', durationMs: 4, status: 'running', detail: 'Generating SSE payload to client' },
+    { name: 'AWS CDS Inbound Webhook', durationMs: 14, status: 'done', detail: 'Received customer claim payload' },
+    { name: 'Nova Lite Multimodal Inspection', durationMs: 95, status: 'done', detail: 'Condition Grade A+ verified' },
+    { name: 'ERP Inventory Reserve Hold', durationMs: 45, status: 'done', detail: 'Reserved replacement SKU' },
+    { name: 'PayPal Orders Pre-Authorization', durationMs: 26, status: 'done', detail: 'Executed POST /v2/checkout/orders' },
   ],
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  if (!isOpen) return null;
 
   return (
-    <div data-ui="floating-inspector" className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 font-sans max-w-[calc(100vw-2rem)]">
-      {/* Floating Collapsed Pill */}
+    <div className="fixed inset-0 z-50 flex items-center justify-end bg-black/60 backdrop-blur-sm">
       <motion.div
-        layout
-        className="overflow-hidden rounded-xl border border-white/10 bg-[#0e0e14] shadow-[0_12px_32px_rgba(0,0,0,0.7)]"
+        initial={{ x: '100%' }}
+        animate={{ x: 0 }}
+        exit={{ x: '100%' }}
+        transition={{ type: 'spring', damping: 25, stiffness: 220 }}
+        data-ui="live-ai-inspector-drawer"
+        className="relative h-full w-full max-w-md bg-[#0e0f14] flex flex-col p-6 space-y-5 overflow-y-auto"
       >
-        <div
-          onClick={() => setIsOpen(!isOpen)}
-          className="flex cursor-pointer items-center gap-3 px-4 py-2.5 transition-colors hover:bg-white/[0.04]"
-        >
-          <div className="flex items-center gap-2">
-            <span className="relative flex h-2 w-2">
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-            </span>
-            <span className="text-xs font-medium text-neutral-200 flex items-center gap-1">
-              <Cpu className="h-3 w-3 text-[#00dce6]" />
-              {modelName}
-            </span>
+        {/* Header */}
+        <div className="flex items-center justify-between pb-3">
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-[#00dce6]/10 border border-[#00dce6]/25 flex items-center justify-center text-[#00dce6]">
+              <Cpu className="w-4 h-4" />
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold text-white tracking-tight">
+                Live AI Inference Inspector
+              </h3>
+              <p className="text-[11px] text-neutral-400">
+                Synchronous multi-agent execution telemetry
+              </p>
+            </div>
           </div>
-
-          <div className="h-3 w-[1px] bg-white/10" />
-
-          <div className="flex items-center gap-2 text-[11px] text-neutral-400">
-            <span className="flex items-center gap-1 text-cyan-400">
-              <Zap className="h-3 w-3" />
-              {latencyMs}ms
-            </span>
-            <span>•</span>
-            <span>{tokensPerSec} t/s</span>
-          </div>
-
-          <button className="text-neutral-400 hover:text-white">
-            {isOpen ? <ChevronDown className="h-3.5 w-3.5" /> : <ChevronUp className="h-3.5 w-3.5" />}
+          <button
+            onClick={onClose}
+            className="w-8 h-8 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] text-neutral-400 hover:text-white flex items-center justify-center transition-colors"
+          >
+            <X className="w-4 h-4" />
           </button>
         </div>
 
-        {/* Expanded Telemetry Drawer */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.25, ease: 'easeInOut' }}
-              className="bg-black/40 px-4 py-3 text-xs"
-            >
-              <div className="flex items-center justify-between text-[11px] text-neutral-400 mb-2">
-                <span className="flex items-center gap-1 font-medium">
-                  <Terminal className="h-3 w-3 text-[#00dce6]" /> Execution Pipeline Trace
-                </span>
-                <span className="text-emerald-400 font-medium">Live 60fps</span>
-              </div>
+        {/* Top Specs Grid */}
+        <div className="grid grid-cols-2 gap-3">
+          <div className="p-3 rounded-lg bg-white/[0.02] border border-white/[0.06] space-y-1">
+            <span className="text-[11px] text-neutral-400">Foundation Model</span>
+            <div className="text-xs font-semibold text-white">Nova Lite 1.0</div>
+            <div className="text-[10px] text-neutral-500">amazon.nova-lite-v1:0</div>
+          </div>
+          <div className="p-3 rounded-lg bg-white/[0.02] border border-white/[0.06] space-y-1">
+            <span className="text-[11px] text-neutral-400">Inference Latency</span>
+            <div className="text-xs font-semibold text-[#00dce6] flex items-center gap-1">
+              <Zap className="w-3 h-3" />
+              <span>{latencyMs}ms end-to-end</span>
+            </div>
+            <div className="text-[10px] text-neutral-500">{tokensPerSec} tokens / sec</div>
+          </div>
+        </div>
 
-              <div className="space-y-2 mt-2">
-                {steps.map((step, idx) => (
-                  <div key={idx} className="flex flex-col gap-0.5 rounded-lg bg-white/[0.02] p-2 border border-white/[0.04]">
-                    <div className="flex items-center justify-between text-neutral-300 font-medium">
-                      <span className="flex items-center gap-1.5">
-                        {step.status === 'done' ? (
-                          <CheckCircle2 className="h-3 w-3 text-emerald-400" />
-                        ) : (
-                          <Activity className="h-3 w-3 text-cyan-400 animate-spin" />
-                        )}
-                        {step.name}
-                      </span>
-                      <span className="text-[10px] text-neutral-400">{step.durationMs}ms</span>
-                    </div>
-                    {step.detail && (
-                      <p className="text-[11px] text-neutral-400 pl-4.5 truncate">{step.detail}</p>
-                    )}
-                  </div>
-                ))}
-              </div>
+        {/* Pipeline Step Traces */}
+        <div className="space-y-2.5">
+          <div className="flex items-center justify-between text-xs text-neutral-300 font-medium">
+            <span className="flex items-center gap-1.5">
+              <Terminal className="w-3.5 h-3.5 text-[#00dce6]" />
+              Execution Pipeline Trace
+            </span>
+            <span className="text-[11px] text-neutral-500">{steps.length} Steps Completed</span>
+          </div>
 
-              <div className="mt-3 pt-2 bg-white/[0.02] p-2 rounded flex items-center justify-between text-[10px] text-neutral-400">
-                <span>Memory Context: 4 nodes</span>
-                <span className="text-[#00dce6]/90 font-medium">Deterministic Pipeline</span>
+          <div className="space-y-2">
+            {steps.map((step, idx) => (
+              <div
+                key={idx}
+                className="rounded-lg bg-black/40 border border-white/[0.06] p-3 space-y-1 hover:border-white/[0.12] transition-colors"
+              >
+                <div className="flex items-center justify-between text-xs text-neutral-200 font-medium">
+                  <span className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span>{step.name}</span>
+                  </span>
+                  <span className="text-[11px] text-[#00dce6]">{step.durationMs}ms</span>
+                </div>
+                {step.detail && (
+                  <p className="text-[11px] text-neutral-400 pl-5 leading-relaxed">
+                    {step.detail}
+                  </p>
+                )}
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            ))}
+          </div>
+        </div>
+
+        {/* Footer Guarantee */}
+        <div className="mt-auto pt-4 flex items-center justify-between text-[11px] text-neutral-400">
+          <span className="flex items-center gap-1 text-emerald-400">
+            <ShieldCheck className="w-3.5 h-3.5" />
+            Deterministic Code Gate Active
+          </span>
+          <button
+            onClick={onClose}
+            className="min-h-[32px] px-3 py-1 rounded bg-white/[0.06] hover:bg-white/[0.1] text-white text-xs transition-colors"
+          >
+            Close Inspector
+          </button>
+        </div>
       </motion.div>
     </div>
   );
