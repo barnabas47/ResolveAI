@@ -1,0 +1,195 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06070a" />
+      <stop offset="50%" stop-color="#090c14" />
+      <stop offset="100%" stop-color="#050608" />
+    </linearGradient>
+
+    <linearGradient id="paypalCyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00dce6" />
+      <stop offset="50%" stop-color="#0070ba" />
+      <stop offset="100%" stop-color="#003087" />
+    </linearGradient>
+
+    <linearGradient id="neonGlowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00dce6" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#0070ba" stop-opacity="0" />
+    </linearGradient>
+
+    <radialGradient id="centerOrb" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#00dce6" stop-opacity="0.18" />
+      <stop offset="60%" stop-color="#0070ba" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#06070a" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Filter for Neon Glow -->
+    <filter id="glowFilter" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <style>
+      @keyframes pulseGlow {
+        0%, 100% { opacity: 0.15; transform: scale(1); }
+        50% { opacity: 0.28; transform: scale(1.04); }
+      }
+      @keyframes floatSlow {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+      }
+      @keyframes dashFlow {
+        0% { stroke-dashoffset: 200; }
+        100% { stroke-dashoffset: 0; }
+      }
+      @keyframes blinkCursor {
+        0%, 49% { opacity: 1; }
+        50%, 100% { opacity: 0; }
+      }
+      @keyframes nodePulse {
+        0%, 100% { r: 3.5; opacity: 0.7; }
+        50% { r: 5.5; opacity: 1; }
+      }
+
+      .bg-orb {
+        transform-origin: 600px 180px;
+        animation: pulseGlow 6s ease-in-out infinite;
+      }
+      .floating-crest {
+        animation: floatSlow 5s ease-in-out infinite;
+      }
+      .circuit-line {
+        stroke-dasharray: 8 6;
+        animation: dashFlow 20s linear infinite;
+      }
+      .cursor-blink {
+        animation: blinkCursor 1.1s infinite;
+      }
+      .pulsing-node {
+        animation: nodePulse 3s ease-in-out infinite;
+      }
+    </style>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1200" height="420" fill="url(#bgGrad)" />
+
+  <!-- Ambient Glowing Orb -->
+  <circle class="bg-orb" cx="600" cy="180" r="320" fill="url(#centerOrb)" />
+
+  <!-- Architectural Background Grid -->
+  <g opacity="0.12" stroke="#00dce6" stroke-width="0.75">
+    <line x1="100" y1="0" x2="100" y2="420" />
+    <line x1="250" y1="0" x2="250" y2="420" />
+    <line x1="400" y1="0" x2="400" y2="420" />
+    <line x1="550" y1="0" x2="550" y2="420" />
+    <line x1="700" y1="0" x2="700" y2="420" />
+    <line x1="850" y1="0" x2="850" y2="420" />
+    <line x1="1000" y1="0" x2="1000" y2="420" />
+    <line x1="1150" y1="0" x2="1150" y2="420" />
+
+    <line x1="0" y1="70" x2="1200" y2="70" />
+    <line x1="0" y1="140" x2="1200" y2="140" />
+    <line x1="0" y1="210" x2="1200" y2="210" />
+    <line x1="0" y1="280" x2="1200" y2="280" />
+    <line x1="0" y1="350" x2="1200" y2="350" />
+  </g>
+
+  <!-- Flow Circuit Paths -->
+  <g opacity="0.35" fill="none" stroke="#00dce6" stroke-width="1.2">
+    <path class="circuit-line" d="M 120 210 L 280 210 L 360 140 L 520 140" />
+    <path class="circuit-line" d="M 680 140 L 840 140 L 920 210 L 1080 210" />
+    <path class="circuit-line" d="M 280 210 L 360 280 L 520 280" />
+    <path class="circuit-line" d="M 680 280 L 840 280 L 920 210" />
+  </g>
+
+  <!-- Pulsing Circuit Nodes -->
+  <circle class="pulsing-node" cx="280" cy="210" fill="#00dce6" filter="url(#softGlow)" />
+  <circle class="pulsing-node" cx="520" cy="140" fill="#0070ba" filter="url(#softGlow)" />
+  <circle class="pulsing-node" cx="680" cy="140" fill="#0070ba" filter="url(#softGlow)" />
+  <circle class="pulsing-node" cx="520" cy="280" fill="#10b981" filter="url(#softGlow)" />
+  <circle class="pulsing-node" cx="680" cy="280" fill="#10b981" filter="url(#softGlow)" />
+  <circle class="pulsing-node" cx="920" cy="210" fill="#00dce6" filter="url(#softGlow)" />
+
+  <!-- Top Category Badges -->
+  <g transform="translate(600, 52)">
+    <rect x="-240" y="-14" width="480" height="28" rx="14" fill="#0c101d" stroke="#00dce6" stroke-width="1" stroke-opacity="0.3" />
+    <circle cx="-218" cy="0" r="4" fill="#10b981" />
+    <text x="-202" y="4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#00dce6" letter-spacing="1.5">
+      PAYPAL AI HACKATHON 2026 · AGENTIC COMMERCE PROTOCOL
+    </text>
+  </g>
+
+  <!-- Central Title Header & Branding -->
+  <g class="floating-crest" transform="translate(600, 155)">
+    <!-- Main Big Title -->
+    <text text-anchor="middle" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="52" font-weight="800" fill="#ffffff" letter-spacing="-1.5">
+      PayPal <tspan fill="url(#paypalCyanGrad)">ResolveAI</tspan>
+    </text>
+    
+    <!-- Subtitle -->
+    <text text-anchor="middle" y="42" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="400" fill="#94a3b8" letter-spacing="0.2">
+      Autonomous Dispute, Zero-Carbon Return &amp; Instant Settlement Copilot
+    </text>
+  </g>
+
+  <!-- Editorial Metrics / Capability Bento Row -->
+  <g transform="translate(600, 270)">
+    <!-- Pill 1: PayPal Capture Refund -->
+    <g transform="translate(-360, 0)">
+      <rect x="-85" y="-18" width="170" height="36" rx="8" fill="#0b0e17" stroke="#1e293b" stroke-width="1" />
+      <circle cx="-65" cy="0" r="3" fill="#00dce6" />
+      <text x="-52" y="4" font-family="monospace" font-size="11" font-weight="600" fill="#e2e8f0">
+        /v2/captures/refund
+      </text>
+    </g>
+
+    <!-- Pill 2: AG Grid Enterprise -->
+    <g transform="translate(-120, 0)">
+      <rect x="-85" y="-18" width="170" height="36" rx="8" fill="#0b0e17" stroke="#1e293b" stroke-width="1" />
+      <circle cx="-65" cy="0" r="3" fill="#10b981" />
+      <text x="-52" y="4" font-family="monospace" font-size="11" font-weight="600" fill="#e2e8f0">
+        AG Grid Enterprise
+      </text>
+    </g>
+
+    <!-- Pill 3: Amazon Nova Lite -->
+    <g transform="translate(120, 0)">
+      <rect x="-85" y="-18" width="170" height="36" rx="8" fill="#0b0e17" stroke="#1e293b" stroke-width="1" />
+      <circle cx="-65" cy="0" r="3" fill="#00dce6" />
+      <text x="-52" y="4" font-family="monospace" font-size="11" font-weight="600" fill="#e2e8f0">
+        Nova Lite (180ms)
+      </text>
+    </g>
+
+    <!-- Pill 4: Code Gate 100% Defense -->
+    <g transform="translate(360, 0)">
+      <rect x="-85" y="-18" width="170" height="36" rx="8" fill="#0b0e17" stroke="#1e293b" stroke-width="1" />
+      <circle cx="-65" cy="0" r="3" fill="#f59e0b" />
+      <text x="-52" y="4" font-family="monospace" font-size="11" font-weight="600" fill="#e2e8f0">
+        Deterministic Gate
+      </text>
+    </g>
+  </g>
+
+  <!-- Bottom Console Status Ticker -->
+  <g transform="translate(600, 360)">
+    <rect x="-420" y="-16" width="840" height="32" rx="6" fill="#07090e" stroke="#0f172a" stroke-width="1" />
+    <text x="-395" y="4" font-family="monospace" font-size="11" fill="#64748b">
+      <tspan fill="#10b981">LIVE</tspan> · DISPUTE_AUTO_SETTLED: #PP-DISP-98421 [TX: PAYID-M7K2819] → CAPTURE_REFUND $149.00 WAIVED $20 FEE
+      <tspan class="cursor-blink" fill="#00dce6"> ▋</tspan>
+    </text>
+  </g>
+</svg>

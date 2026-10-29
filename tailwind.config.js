@@ -1,0 +1,68 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "surface": "#131317",
+        "surface-dim": "#131317",
+        "surface-bright": "#39393d",
+        "surface-container-lowest": "#0e0e12",
+        "surface-container-low": "#1b1b1f",
+        "surface-container": "#1f1f23",
+        "surface-container-high": "#2a292e",
+        "surface-container-highest": "#353439",
+        "on-surface": "#e5e1e7",
+        "on-surface-variant": "#b9cacb",
+        "primary": "#e0fdff",
+        "primary-container": "#00f2fe",
+        "primary-fixed": "#6ff6ff",
+        "primary-fixed-dim": "#00dce6",
+        "on-primary": "#00373a",
+        "on-primary-container": "#006a70",
+        "secondary": "#dbb8ff",
+        "secondary-container": "#6807ba",
+        "secondary-fixed": "#efdbff",
+        "secondary-fixed-dim": "#dbb8ff",
+        "on-secondary": "#470083",
+        "tertiary": "#fff6f0",
+        "tertiary-container": "#ffd3aa",
+        "tertiary-fixed-dim": "#ffb86f",
+        "outline": "#849495",
+        "outline-variant": "#3a494b",
+        "error": "#ffb4ab",
+        "error-container": "#93000a",
+        "apple": {
+          canvas: "#09090b",
+          surface: "#141417",
+          subsurface: "#1c1c21",
+          elevated: "#23232b",
+          border: "rgba(255, 255, 255, 0.08)",
+          borderStrong: "rgba(255, 255, 255, 0.14)",
+          blue: "#0a84ff",
+          green: "#30d158",
+          amber: "#ff9f0a",
+          purple: "#bf5af2",
+          red: "#ff453a",
+        }
+      },
+      fontFamily: {
+        sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+        display: ['"Plus Jakarta Sans"', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'monospace'],
+        body: ['Inter', 'sans-serif'],
+      },
+      boxShadow: {
+        'rim-cyan': '0 0 35px -5px rgba(0, 242, 254, 0.18), inset 0 1px 0 0 rgba(255, 255, 255, 0.12)',
+        'rim-purple': '0 0 35px -5px rgba(104, 7, 186, 0.22), inset 0 1px 0 0 rgba(255, 255, 255, 0.1)',
+        'apple-card': '0 1px 2px rgba(0, 0, 0, 0.25), 0 4px 16px rgba(0, 0, 0, 0.2)',
+        'apple-float': '0 8px 32px rgba(0, 0, 0, 0.36), 0 1px 2px rgba(255, 255, 255, 0.06) inset',
+      }
+    },
+  },
+  plugins: [],
+}

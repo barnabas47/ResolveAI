@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}.bg-dot-matrix{background-image:radial-gradient(rgba(255,255,255,0.08) 1px,transparent 0);background-size:24px 24px;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-primary-fixed":"#002022","surface-variant":"#353439","surface-dim":"#131317","secondary":"#dbb8ff","tertiary":"#fff6f0","secondary-fixed-dim":"#dbb8ff","surface-container-low":"#1b1b1f","error-container":"#93000a","surface-bright":"#39393d","on-tertiary-fixed":"#2c1600","on-primary-fixed-variant":"#004f53","on-secondary-container":"#d0a6ff","surface":"#131317","primary-container":"#00f2fe","on-primary":"#00373a","primary-fixed":"#6ff6ff","on-surface":"#e5e1e7","on-tertiary":"#4a2800","secondary-container":"#6807ba","surface-container-high":"#2a292e","on-secondary-fixed":"#2b0052","on-tertiary-container":"#8c5200","surface-tint":"#00dce6","inverse-primary":"#00696f","on-secondary":"#470083","inverse-surface":"#e5e1e7","surface-container-lowest":"#0e0e12","outline-variant":"#3a494b","error":"#ffb4ab","on-error":"#690005","tertiary-container":"#ffd3aa","inverse-on-surface":"#303034","on-tertiary-fixed-variant":"#693c00","outline":"#849495","surface-container":"#1f1f23","primary":"#e0fdff","tertiary-fixed":"#ffdcbd","secondary-fixed":"#efdbff","on-error-container":"#ffdad6","primary-fixed-dim":"#00dce6","surface-container-highest":"#353439","on-secondary-fixed-variant":"#6600b7","on-surface-variant":"#b9cacb","on-primary-container":"#006a70","tertiary-fixed-dim":"#ffb86f","on-background":"#e5e1e7","background":"#131317"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-md":"1rem","space-sm":"0.5rem","space-xl":"2.5rem",gutter:"1.25rem","gutter-mobile":"0.75rem","margin-mobile":"1rem","space-xs":"0.25rem","space-lg":"1.5rem",margin:"2rem"},fontFamily:{"headline-xl":["Plus Jakarta Sans"],"headline-xl-mobile":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"label-mono-xs":["JetBrains Mono"],"body-lg":["Inter"],"headline-lg":["Plus Jakarta Sans"],"body-sm":["Inter"],"body-md":["Inter"],"label-mono-sm":["JetBrains Mono"],"label-mono-md":["JetBrains Mono"],"headline-lg-mobile":["Plus Jakarta Sans"]},fontSize:{"headline-xl":["48px",{lineHeight:"56px",letterSpacing:"-0.03em",fontWeight:"700"}],"headline-xl-mobile":["32px",{lineHeight:"40px",letterSpacing:"-0.03em",fontWeight:"700"}],"headline-md":["20px",{lineHeight:"28px",letterSpacing:"-0.02em",fontWeight:"600"}],"label-mono-xs":["10px",{lineHeight:"12px",letterSpacing:"0.02em",fontWeight:"400"}],"body-lg":["16px",{lineHeight:"24px",letterSpacing:"-0.015em",fontWeight:"400"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.03em",fontWeight:"600"}],"body-sm":["12px",{lineHeight:"16px",letterSpacing:"0em",fontWeight:"400"}],"body-md":["14px",{lineHeight:"20px",letterSpacing:"-0.01em",fontWeight:"400"}],"label-mono-sm":["11px",{lineHeight:"14px",letterSpacing:"-0.01em",fontWeight:"500"}],"label-mono-md":["13px",{lineHeight:"18px",letterSpacing:"-0.02em",fontWeight:"500"}],"headline-lg-mobile":["24px",{lineHeight:"32px",letterSpacing:"-0.025em",fontWeight:"600"}]}}}};</script></head><body class="bg-surface font-body-md text-body-md text-on-surface min-h-screen relative overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container"><div class="fixed inset-0 pointer-events-none z-0"><div class="absolute top-0 right-1/4 w-[650px] h-[450px] bg-secondary-container/15 rounded-full blur-[140px]"></div><div class="absolute top-20 left-10 w-[550px] h-[350px] bg-primary-container/10 rounded-full blur-[130px]"></div><div class="absolute bottom-10 right-10 w-[500px] h-[400px] bg-secondary-container/10 rounded-full blur-[150px]"></div><div class="absolute inset-0 bg-dot-matrix opacity-40"></div></div><header class="fixed top-0 left-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-2xl shadow-[0_1px_12px_rgba(0,0,0,0.4)]"><div class="h-20 w-full px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md min-w-0"><div class="flex items-center gap-space-sm shrink-0"><img alt="RetailReturn Copilot Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1ULCjCCMqRO2_9mterDmryXuKU7f6-htyhkJfeYQwVrAxeKqSOj9xzkKOQ9YgnG3h-Wer_Rbe9JN8VN7ttmAoarBOs24GJl2q8lSPJ_7ZxrV9Ikk8BsLd4hz75Lt1RdWcCLwv6nTPgWFt5mMu1iQoVOaCoFlawSf7rekx4AEuD_IWwq7k_qfbIqo_U-8Ya6KziEhIvVTyzlK9n0CvFfTXaHtgf38_Yd_YyqOX6cNgsyBs-EpZnaJGy6aw"/><span class="font-headline-md text-headline-md text-primary tracking-tight">RetailReturn Copilot</span></div><div class="hidden xl:flex items-center gap-space-xs text-on-surface-variant shrink-0"><span class="font-label-mono-xs text-label-mono-xs px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant uppercase">AWS CDS Agentic AI Partner Hackathon</span></div><div class="hidden 2xl:flex items-center gap-space-xs"><div class="flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-surface-container-lowest/80"><span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span><span class="font-label-mono-xs text-label-mono-xs text-on-surface">Bedrock AgentCore: ONLINE</span></div><div class="flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-surface-container-lowest/80"><span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim"></span><span class="font-label-mono-xs text-label-mono-xs text-on-surface-variant">AWS CDS EUM: CONNECTED</span></div><div class="flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-surface-container-lowest/80"><span class="material-symbols-outlined text-xs text-on-surface-variant">dns</span><span class="font-label-mono-xs text-label-mono-xs text-on-surface-variant">us-east-1</span></div></div></div><nav class="hidden lg:flex items-center gap-space-xs px-space-xs py-1 rounded-lg bg-surface-container-lowest/90" data-active-classes="bg-surface-container-high text-primary font-headline-md"><a class="px-space-md py-1.5 rounded-lg font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="agentcore-operations-phone-simulator" href="#">AgentCore Operations &amp; Phone Simulator</a><a class="px-space-md py-1.5 rounded-lg font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="deep-trace-webhook-analytics" href="#">Deep Trace &amp; Webhook Analytics</a></nav><div class="flex items-center gap-space-md shrink-0"><div class="hidden md:flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-surface-container-low"><span class="material-symbols-outlined text-sm text-primary-fixed-dim">speed</span><span class="font-label-mono-sm text-label-mono-sm text-primary-fixed-dim">320ms</span></div><div class="hidden sm:flex items-center gap-space-xs px-space-sm py-1 rounded-lg bg-surface-container-high text-on-surface-variant"><span class="material-symbols-outlined text-sm">cloud</span><span class="font-label-mono-xs text-label-mono-xs text-on-surface">Bedrock Titan / Claude 3.5</span></div><div class="flex items-center gap-space-sm pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-primary-container/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBU0eCT5GzPdzgAm5SeZTVBjCLzdtTdgQw8MWbz1EOc8ChSgUaSKzLxDsr7UcmBAoRE17qQDpL6LgpsxgNlBrcPjMyNGrZkczljfOg9IKTMCqeE-bZC_jh4U0bWlLCD3nI_WKE_kEQk5MJ_Ue5iyiZVzYdY8b9_JLEWvmnfWfazWICC_yjD8lIsLpfeiyzn8bpCNM_Dg8cmxD_8aBCy1qZd4yr7557GAEMvQc-H9b4RcHyccLL2GCUy"/></div></div></div><div class="h-12 w-full px-margin bg-surface-container-lowest/60 backdrop-blur-xl flex items-center justify-between gap-space-md overflow-x-auto"><div class="flex items-center gap-space-sm shrink-0"><span class="font-label-mono-xs text-label-mono-xs text-on-surface-variant uppercase tracking-wider flex items-center gap-1"><span class="material-symbols-outlined text-xs text-primary">bolt</span> Quick Scenarios:</span><button class="flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" type="button"><span class="font-label-mono-xs text-label-mono-xs text-primary-fixed-dim">⚡ Scenario 1:</span><span class="font-body-sm text-body-sm">Wrong Shoe Size Exchange (WhatsApp -&gt; RCS)</span></button><button class="flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" type="button"><span class="font-label-mono-xs text-label-mono-xs text-secondary">📦 Scenario 2:</span><span class="font-body-sm text-body-sm">Damaged Jacket Claim (Visual AI Inspection)</span></button><button class="flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-secondary-container/30 text-secondary hover:bg-secondary-container/50 hover:text-tertiary transition-all" type="button"><span class="font-label-mono-xs text-label-mono-xs text-primary">▶️ Scenario 3:</span><span class="font-body-sm text-body-sm">1-Click Instant Demo</span></button></div><div class="hidden xl:flex items-center gap-space-sm shrink-0"><span class="font-label-mono-xs text-label-mono-xs text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-xs text-primary-container">hub</span> Orchestrated via StepFunctions &amp; Bedrock Agents</span></div></div></header><main class="relative z-10 w-full pt-32 min-h-screen bg-transparent pb-space-xl"><div class="flex flex-col w-full">
+<div class="w-full px-margin py-space-md flex flex-col gap-space-lg">
+<!-- Top Action & Filter Bar -->
+<div class="w-full flex flex-col lg:flex-row lg:items-center justify-between gap-space-md bg-surface-container-lowest/80 backdrop-blur-2xl rounded-xl p-space-md shadow-xl relative overflow-hidden">
+<div class="absolute -top-16 -left-16 w-48 h-48 bg-primary-container/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-ping"></span>
+<span class="font-label-mono-xs text-label-mono-xs text-primary uppercase tracking-widest">OpenTelemetry · EUM CDS v2.4</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight truncate">
+          Deep Trace &amp; Omnichannel Webhook Telemetry
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">
+          End-to-end auditability across AWS CDS (Communication Developer Services) &amp; Amazon Bedrock AgentCore Action Groups
+        </p>
+</div>
+<!-- Action Controls -->
+<div class="flex flex-wrap items-center gap-space-sm shrink-0">
+<div class="flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-surface-container-high text-on-surface">
+<span class="material-symbols-outlined text-sm text-outline">search</span>
+<input class="bg-transparent border-0 outline-none font-label-mono-xs text-label-mono-xs text-primary placeholder-outline w-44" placeholder="Filter by Session ID..." type="text" value="sess-bedrock-904221"/>
+</div>
+<div class="flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-surface-container-high text-on-surface text-body-sm font-body-sm">
+<span class="material-symbols-outlined text-sm text-secondary">history</span>
+<span>Last 1 Hour</span>
+<span class="material-symbols-outlined text-xs text-outline">expand_more</span>
+</div>
+<button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface transition-all text-body-sm font-body-sm shadow-sm" type="button">
+<span class="material-symbols-outlined text-sm text-primary-fixed-dim">ios_share</span>
+<span>Export Trace HAR</span>
+</button>
+<div class="flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-on-primary-fixed/60 text-primary-fixed">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-label-mono-xs text-label-mono-xs">Live Socket: 10.2ms</span>
+</div>
+</div>
+</div>
+<!-- KPI Summary Bento Strip -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-gutter w-full">
+<!-- Card 1 -->
+<div class="relative bg-surface-container-lowest/80 backdrop-blur-2xl rounded-xl p-space-md shadow-lg flex flex-col justify-between overflow-hidden group hover:bg-surface-container-low transition-all">
+<div class="flex items-center justify-between gap-space-sm">
+<span class="font-label-mono-xs text-label-mono-xs text-on-surface-variant uppercase tracking-wider">Inbound Webhook Ingestion</span>
+<span class="material-symbols-outlined text-base text-primary-fixed-dim">cloud_sync</span>
+</div>
+<div class="my-space-sm flex items-baseline gap-space-xs">
+<span class="font-headline-lg text-headline-lg text-primary font-bold">42,891</span>
+<span class="font-label-mono-xs text-label-mono-xs text-outline">events/hr</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-primary-fixed-dim flex items-center gap-0.5">
+<span class="material-symbols-outlined text-xs">verified</span> 99.99% CDS Delivery
+          </span>
+<span class="font-label-mono-xs text-label-mono-xs text-on-surface-variant">+4.2% vs avg</span>
+</div>
+<div class="absolute bottom-0 left-0 h-0.5 w-full bg-primary-container/70"></div>
+</div>
+<!-- Card 2 -->
+<div class="relative bg-surface-container-lowest/80 backdrop-blur-2xl rounded-xl p-space-md shadow-lg flex flex-col justify-between overflow-hidden group hover:bg-surface-container-low transition-all">
+<div class="flex items-center justify-between gap-space-sm">
+<span class="font-label-mono-xs text-label-mono-xs text-on-surface-variant uppercase tracking-wider">Bedrock Agent Invocations</span>
+<span class="material-symbols-outlined text-base text-secondary">memory</span>
+</div>
+<div class="my-space-sm flex items-baseline gap-space-xs">
+<span class="font-headline-lg text-headline-lg text-secondary font-bold">128,450</span>
+<span class="font-label-mono-xs text-label-mono-xs text-outline">actions</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-secondary-fixed flex items-center gap-0.5">
+<span class="material-symbols-outlined text-xs">bolt</span> 4 Action Groups
+          </span>
+<span class="font-label-mono-xs text-label-mono-xs text-on-surface-variant">Zero Throttles</span>
+</div>
+<div class="absolute bottom-0 left-0 h-0.5 w-full bg-secondary-container"></div>
+</div>
+<!-- Card 3 -->
+<div class="relative bg-surface-container-lowest/80 backdrop-blur-2xl rounded-xl p-space-md shadow-lg flex flex-col justify-between overflow-hidden group hover:bg-surface-container-low transition-all">
+<div class="flex items-center justify-between gap-space-sm">
+<span class="font-label-mono-xs text-label-mono-xs text-on-surface-variant uppercase tracking-wider">Multimodal Vision Pass</span>
+<span class="material-symbols-outlined text-base text-tertiary-fixed-dim">document_scanner</span>
+</div>
+<div class="my-space-sm flex items-baseline gap-space-xs">
+<span class="font-headline-lg text-headline-lg text-tertiary font-bold">96.4%</span>
+<span class="font-label-mono-xs text-label-mono-xs text-primary-fixed-dim">autonomous</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant flex items-center gap-0.5">
+<span class="material-symbols-outlined text-xs text-primary-fixed-dim">check_circle</span> 0 Human Escalation
+          </span>
+<span class="font-label-mono-xs text-label-mono-xs text-outline">4,120 Claims</span>
+</div>
+<div class="absolute bottom-0 left-0 h-0.5 w-full bg-primary-fixed-dim"></div>
+</div>
+<!-- Card 4 -->
+<div class="relative bg-surface-container-lowest/80 backdrop-blur-2xl rounded-xl p-space-md shadow-lg flex flex-col justify-between overflow-hidden group hover:bg-surface-container-low transition-all">
+<div class="flex items-center justify-between gap-space-sm">
+<span class="font-label-mono-xs text-label-mono-xs text-on-surface-variant uppercase tracking-wider">Cost per Return Cycle</span>
+<span class="material-symbols-outlined text-base text-primary-container">monetization_on</span>
+</div>
+<div class="my-space-sm flex items-baseline gap-space-xs">
+<span class="font-headline-lg text-headline-lg text-primary-container font-bold">$0.142</span>
+<span class="font-label-mono-xs text-label-mono-xs text-outline">/ transaction</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-primary-fixed-dim flex items-center gap-0.5">
+<span class="material-symbols-outlined text-xs">trending_down</span> -88% vs Manual CSR
+          </span>
+<span class="font-label-mono-xs text-label-mono-xs text-on-surface-variant">AWS Bedrock + CDS</span>
+</div>
+<div class="absolute bottom-0 left-0 h-0.5 w-full bg-primary-fixed-dim"></div>
+</div>
+</div>
+<!-- Main Dual Column Layout -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-gutter w-full">
+<!-- Left Column (Trace Stream & Active DAG) 7 cols on XL -->
+<div class="xl:col-span-7 flex flex-col gap-space-lg">
+<!-- Interactive Live Trace Streams -->
+<div class="bg-surface-container-lowest/80 backdrop-blur-2xl rounded-xl p-space-md shadow-xl flex flex-col">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-base text-primary">dynamic_feed</span>
+<span class="font-headline-md text-headline-md text-primary">Live Trace Pipeline</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-mono-xs text-label-mono-xs px-2 py-0.5 rounded bg-surface-container-high text-primary-fixed-dim">Realtime Ingestion</span>
+<span class="material-symbols-outlined text-sm text-outline animate-spin">autorenew</span>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs mt-space-sm">
+<!-- Trace #TX-904221 (ACTIVE / EXPANDED) -->
+<div class="p-space-sm rounded-lg bg-surface-container-low transition-all cursor-pointer">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="material-symbols-outlined text-base text-primary-container">unfold_less</span>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-mono-sm text-label-mono-sm text-primary font-bold">#TX-904221</span>
+<span class="px-1.5 py-0.5 rounded text-label-mono-xs font-label-mono-xs bg-primary-container/20 text-primary-container font-semibold">ACTIVE INSPECTION</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface truncate">Nike Air Max Size Exchange (WhatsApp → RCS Handoff)</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<span class="font-label-mono-xs text-label-mono-xs text-primary-fixed-dim bg-on-primary-fixed px-2 py-0.5 rounded">318ms</span>
+<span class="font-label-mono-xs text-label-mono-xs text-outline">12s ago</span>
+</div>
+</div>
+<!-- Inline Expanded Call Tree / DAG Visualization -->
+<div class="mt-space-md pt-space-sm bg-surface-container-lowest/90 rounded-lg p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-mono-xs text-label-mono-xs text-outline uppercase tracking-wider">Step Execution DAG · Amazon Bedrock Orchestration</span>
+<span class="font-label-mono-xs text-label-mono-xs text-secondary">5 Nodes · 0 Errors</span>
+</div>
+<!-- Call Tree Steps -->
+<div class="flex flex-col gap-space-xs relative">
+<div class="absolute left-3.5 top-3 bottom-3 w-0.5 bg-surface-variant"></div>
+<!-- Step 1 -->
+<div class="flex items-start gap-space-sm relative z-10">
+<div class="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-xs text-primary">webhook</span>
+</div>
+<div class="flex-1 bg-surface-container-low rounded-lg p-space-sm flex flex-col gap-0.5">
+<div class="flex items-center justify-between">
+<span class="font-label-mono-xs text-label-mono-xs text-primary font-bold">1. AWS CDS Webhook Inbound</span>
+<span class="font-label-mono-xs text-label-mono-xs text-outline">48ms</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Event: <code class="text-primary-container">whatsapp.message.received</code> · Payload: Media (Shoe Tag Image) + Intent Text</span>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex items-start gap-space-sm relative z-10">
+<div class="w-7 h-7 rounded-full bg-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-xs text-secondary">psychology</span>
+</div>
+<div class="flex-1 bg-surface-container-low rounded-lg p-space-sm flex flex-col gap-0.5">
+<div class="flex items-center justify-between">
+<span class="font-label-mono-xs text-label-mono-xs text-secondary font-bold">2. Bedrock AgentCore Orchestration</span>
+<span class="font-label-mono-xs text-label-mono-xs text-secondary-fixed-dim">112ms</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Invoked <code class="text-secondary">claude-3-5-haiku-20241022</code> · Plan: Vision Analysis → Stock Check → RCS QR Issuance</span>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex items-start gap-space-sm relative z-10">
+<div class="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-xs text-primary-container">image_search</span>
+</div>
+<div class="flex-1 bg-surface-container-low rounded-lg p-space-sm flex flex-col gap-0.5">
+<div class="flex items-center justify-between">
+<span class="font-label-mono-xs text-label-mono-xs text-primary-container font-bold">3. Action Group: InspectProductVisualCondition</span>
+<span class="font-label-mono-xs text-label-mono-xs text-outline">74ms</span>
+</div>
+<span class="font-label-mono-xs text-label-mono-xs text-on-surface bg-surface-container-lowest p-1.5 rounded">
+                        Output: {"confidence": 0.982, "damage_detected": false, "label_match": "NK-AIRMAX-90-M10"}
+                      </span>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="flex items-start gap-space-sm relative z-10">
+<div class="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-xs text-primary-fixed-dim">inventory_2</span>
+</div>
+<div class="flex-1 bg-surface-container-low rounded-lg p-space-sm flex flex-col gap-0.5">
+<div class="flex items-center justify-between">
+<span class="font-label-mono-xs text-label-mono-xs text-primary font-bold">4. Action Group: QueryInventoryWMS</span>
+<span class="font-label-mono-xs text-label-mono-xs text-outline">52ms</span>
+</div>
+<span class="font-label-mono-xs text-label-mono-xs text-on-surface bg-surface-container-lowest p-1.5 rounded">
+                        Output: {"target_SKU": "NK-AM90-10.5", "warehouse_id": "ATL-DC-04", "available_stock": 14}
+                      </span>
+</div>
+</div>
+<!-- Step 5 -->
+<div class="flex items-start gap-space-sm relative z-10">
+<div class="w-7 h-7 rounded-full bg-on-primary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-xs text-primary-fixed-dim">send_and_archive</span>
+</div>
+<div class="flex-1 bg-surface-container-low rounded-lg p-space-sm flex flex-col gap-0.5">
+<div class="flex items-center justify-between">
+<span class="font-label-mono-xs text-label-mono-xs text-primary-fixed-dim font-bold">5. Channel Handoff: CDS.sendRcsMessage</span>
+<span class="font-label-mono-xs text-label-mono-xs text-primary-fixed-dim">32ms</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Dispatched RCS Rich Card Carousel with Instant Drop-off Locker QR barcode</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Trace #TX-904220 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low/50 hover:bg-surface-container-low transition-all cursor-pointer flex items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="material-symbols-outlined text-base text-outline">unfold_more</span>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-mono-sm text-label-mono-sm text-on-surface font-semibold">#TX-904220</span>
+<span class="px-1.5 py-0.5 rounded text-label-mono-xs font-label-mono-xs bg-secondary-container/40 text-secondary">REFUND AUTHORIZED</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant truncate">Patagonia Nano Puff Torn Zipper Claim (Bedrock Multimodal Vision)</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<span class="font-label-mono-xs text-label-mono-xs text-secondary-fixed font-bold">$189.00</span>
+<span class="font-label-mono-xs text-label-mono-xs text-primary-fixed-dim bg-surface-container-high px-2 py-0.5 rounded">440ms</span>
+<span class="font-label-mono-xs text-label-mono-xs text-outline">48s ago</span>
+</div>
+</div>
+<!-- Trace #TX-904219 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low/50 hover:bg-surface-container-low transition-all cursor-pointer flex items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="material-symbols-outlined text-base text-outline">unfold_more</span>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-mono-sm text-label-mono-sm text-on-surface font-semibold">#TX-904219</span>
+<span class="px-1.5 py-0.5 rounded text-label-mono-xs font-label-mono-xs bg-surface-container-high text-primary-fixed-dim">COMPLETED</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant truncate">Instant Drop-off PIN Verification at Atlanta Smart Locker Hub #12</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<span class="font-label-mono-xs text-label-mono-xs text-primary-fixed-dim bg-surface-container-high px-2 py-0.5 rounded">184ms</span>
+<span class="font-label-mono-xs text-label-mono-xs text-outline">2m ago</span>
+</div>
+</div>
+<!-- Trace #TX-904218 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low/50 hover:bg-surface-container-low transition-all cursor-pointer flex items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="material-symbols-outlined text-base text-outline">unfold_more</span>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-mono-sm text-label-mono-sm text-on-surface font-semibold">#TX-904218</span>
+<span class="px-1.5 py-0.5 rounded text-label-mono-xs font-label-mono-xs bg-surface-container-high text-primary">DISPATCHED</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant truncate">SMS Outbound Dispatch Alert &amp; Dynamic Tracking URL Generation</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<span class="font-label-mono-xs text-label-mono-xs text-primary-fixed-dim bg-surface-container-high px-2 py-0.5 rounded">94ms</span>
+<span class="font-label-mono-xs text-label-mono-xs text-outline">3m ago</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Latency Percentile Bar Metrics -->
+<div class="bg-surface-container-lowest/80 backdrop-blur-2xl rounded-xl p-space-md shadow-xl flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-base text-primary-fixed-dim">speed</span>
+<span class="font-headline-md text-headline-md text-on-surface">End-to-End Latency Percentiles</span>
+</div>
+<span class="font-label-mono-xs text-label-mono-xs text-on-surface-variant">Target SLA: &lt;500ms p90</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md mt-space-xs">
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<span class="font-label-mono-xs text-label-mono-xs text-outline">p50 Latency</span>
+<span class="font-label-mono-sm text-label-mono-sm text-primary-fixed-dim font-bold">210 ms</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 42%;"></div>
+</div>
+<span class="font-label-mono-xs text-label-mono-xs text-outline">Median Agent Loop</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<span class="font-label-mono-xs text-label-mono-xs text-outline">p90 Latency</span>
+<span class="font-label-mono-sm text-label-mono-sm text-secondary font-bold">340 ms</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 68%;"></div>
+</div>
+<span class="font-label-mono-xs text-label-mono-xs text-outline">Vision Inferences Included</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<span class="font-label-mono-xs text-label-mono-xs text-outline">p99 Latency</span>
+<span class="font-label-mono-sm text-label-mono-sm text-primary-container font-bold">512 ms</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary-fixed-dim h-full rounded-full" style="width: 89%;"></div>
+</div>
+<span class="font-label-mono-xs text-label-mono-xs text-outline">Edge Cold Starts</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column (Channel Matrix & Raw JSON Inspector) 5 cols on XL -->
+<div class="xl:col-span-5 flex flex-col gap-space-lg">
+<!-- Real-Time Channel Webhook Health Matrix -->
+<div class="bg-surface-container-lowest/80 backdrop-blur-2xl rounded-xl p-space-md shadow-xl flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-base text-secondary">hub</span>
+<span class="font-headline-md text-headline-md text-on-surface">Channel Ingestion Matrix</span>
+</div>
+<span class="font-label-mono-xs text-label-mono-xs text-primary-fixed-dim bg-on-primary-fixed px-2 py-0.5 rounded">All Healthy</span>
+</div>
+<div class="flex flex-col gap-space-xs mt-space-xs">
+<!-- Channel 1: WhatsApp -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-space-sm">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-semibold">WhatsApp Cloud (AWS CDS)</span>
+<span class="font-label-mono-xs text-label-mono-xs text-outline">Payload Ack: 84ms</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-mono-sm text-label-mono-sm text-primary-fixed-dim font-bold">99.98%</span>
+<div class="font-label-mono-xs text-label-mono-xs text-outline">24,190 req/hr</div>
+</div>
+</div>
+<!-- Channel 2: RCS -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-space-sm">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-semibold">RCS Business Messaging</span>
+<span class="font-label-mono-xs text-label-mono-xs text-outline">Payload Ack: 112ms</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-mono-sm text-label-mono-sm text-secondary font-bold">99.94%</span>
+<div class="font-label-mono-xs text-label-mono-xs text-outline">11,402 req/hr</div>
+</div>
+</div>
+<!-- Channel 3: AWS EUM SMS -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-space-sm">
+<span class="w-2 h-2 rounded-full bg-primary-fixed"></span>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-semibold">AWS End User Messaging SMS</span>
+<span class="font-label-mono-xs text-label-mono-xs text-outline">Payload Ack: 46ms</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-mono-sm text-label-mono-sm text-primary-fixed-dim font-bold">100.0%</span>
+<div class="font-label-mono-xs text-label-mono-xs text-outline">6,810 req/hr</div>
+</div>
+</div>
+<!-- Channel 4: Amazon SES -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-space-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></span>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-semibold">Amazon SES Transactional</span>
+<span class="font-label-mono-xs text-label-mono-xs text-outline">Delivery: 120ms</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-mono-sm text-label-mono-sm text-tertiary font-bold">99.99%</span>
+<div class="font-label-mono-xs text-label-mono-xs text-outline">489 req/hr</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Raw JSON Payload & Bedrock Trace Inspector -->
+<div class="bg-surface-container-lowest/80 backdrop-blur-2xl rounded-xl p-space-md shadow-xl flex flex-col gap-space-sm flex-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-base text-primary-container">code</span>
+<span class="font-headline-md text-headline-md text-on-surface">Bedrock Execution Trace JSON</span>
+</div>
+<button class="flex items-center gap-1 font-label-mono-xs text-label-mono-xs text-primary-fixed-dim hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-xs">content_copy</span>
+<span>Copy</span>
+</button>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-lowest overflow-x-auto text-label-mono-xs font-label-mono-xs text-on-surface-variant leading-relaxed select-all">
+<pre class="font-label-mono-xs text-label-mono-xs"><span class="text-secondary">{</span>
+  <span class="text-primary-container">"x-amzn-bedrock-trace-id"</span>: <span class="text-primary">"arn:aws:bedrock:us-east-1:0148:trace/tx-904221-cf"</span>,
+  <span class="text-primary-container">"timestamp"</span>: <span class="text-tertiary">"2025-05-18T14:28:11.842Z"</span>,
+  <span class="text-primary-container">"modelId"</span>: <span class="text-primary">"anthropic.claude-3-5-haiku-20241022-v1:0"</span>,
+  <span class="text-primary-container">"callerChannel"</span>: <span class="text-secondary">"AWS_CDS_WHATSAPP_SANDBOX"</span>,
+  <span class="text-primary-container">"actionGroupInvocationId"</span>: <span class="text-tertiary">"actgrp-inv-99042b-vision-qc"</span>,
+  <span class="text-primary-container">"executionSteps"</span>: <span class="text-secondary">[</span>
+    <span class="text-secondary">{</span>
+      <span class="text-primary-container">"step"</span>: <span class="text-primary-fixed-dim">1</span>,
+      <span class="text-primary-container">"name"</span>: <span class="text-tertiary">"InspectProductVisualCondition"</span>,
+      <span class="text-primary-container">"status"</span>: <span class="text-primary">"SUCCESS"</span>,
+      <span class="text-primary-container">"latencyMs"</span>: <span class="text-primary-fixed-dim">74</span>,
+      <span class="text-primary-container">"bedrockVisionOutput"</span>: <span class="text-secondary">{</span>
+        <span class="text-primary-container">"confidence"</span>: <span class="text-primary-fixed-dim">0.982</span>,
+        <span class="text-primary-container">"damage_detected"</span>: <span class="text-primary-container">false</span>,
+        <span class="text-primary-container">"detected_tags"</span>: <span class="text-secondary">[</span><span class="text-tertiary">"ORIGINAL_BARCODE"</span>, <span class="text-tertiary">"UNWORN"</span><span class="text-secondary">]</span>
+      <span class="text-secondary">}</span>
+    <span class="text-secondary">}</span>,
+    <span class="text-secondary">{</span>
+      <span class="text-primary-container">"step"</span>: <span class="text-primary-fixed-dim">2</span>,
+      <span class="text-primary-container">"name"</span>: <span class="text-tertiary">"QueryInventoryWMS"</span>,
+      <span class="text-primary-container">"status"</span>: <span class="text-primary">"SUCCESS"</span>,
+      <span class="text-primary-container">"latencyMs"</span>: <span class="text-primary-fixed-dim">52</span>,
+      <span class="text-primary-container">"fulfillmentRoute"</span>: <span class="text-tertiary">"ATL-DC-04"</span>
+    <span class="text-secondary">}</span>
+  <span class="text-secondary">]</span>,
+  <span class="text-primary-container">"telemetryFlags"</span>: <span class="text-secondary">{</span>
+    <span class="text-primary-container">"fraudRiskScore"</span>: <span class="text-primary-fixed-dim">0.012</span>,
+    <span class="text-primary-container">"automatedApproval"</span>: <span class="text-primary-container">true</span>
+  <span class="text-secondary">}</span>
+<span class="text-secondary">}</span></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></main><aside class="fixed bottom-space-lg right-space-lg z-50 pointer-events-auto"><div class="flex items-center gap-space-md px-space-md py-space-sm rounded-full bg-surface-container-lowest/90 backdrop-blur-2xl shadow-[0_4px_24px_rgba(0,0,0,0.6)]"><div class="flex items-center gap-space-xs"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary-container"></span></span><span class="font-label-mono-xs text-label-mono-xs text-on-surface uppercase tracking-wider">Live AI Inspector</span></div><div class="h-3 w-px bg-surface-variant"></div><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-xs text-primary-fixed-dim">timelapse</span><span class="font-label-mono-xs text-label-mono-xs text-primary-fixed-dim">320ms Latency</span></div><div class="h-3 w-px bg-surface-variant"></div><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-xs text-secondary">extension</span><span class="font-label-mono-xs text-label-mono-xs text-secondary">Tools: 4 Active</span></div></div></aside><footer class="w-full bg-surface-container-lowest/90 backdrop-blur-xl py-space-lg text-center text-on-surface-variant font-body-sm text-body-sm relative z-10"><div class="w-full px-margin flex flex-col md:flex-row items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm"><span class="font-headline-md text-headline-md text-on-surface">RetailReturn Copilot</span><span class="font-label-mono-xs text-label-mono-xs text-outline">Autonomous Reverse Logistics Agentic Core</span></div><div class="flex items-center gap-space-md text-outline font-label-mono-xs text-label-mono-xs"><span>AWS Cloud Digital Solutions Hackathon Edition</span><span>•</span><span>Powered by Amazon Bedrock &amp; AWS Lambda</span></div></div></footer></body></html>
