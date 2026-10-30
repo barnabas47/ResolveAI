@@ -45,7 +45,7 @@ export const ExecutionGraph: React.FC<ExecutionGraphProps> = ({ nodes, rawPayloa
   };
 
   return (
-    <div className="rounded-xl bg-[#13141a] border border-white/[0.08] p-5 lg:p-6 space-y-4">
+    <div id="execution-graph-section" className="rounded-xl bg-[#13141a] border border-white/[0.08] p-5 lg:p-6 space-y-4">
       {/* Header bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3">
         <div className="flex items-center gap-3">
@@ -64,6 +64,7 @@ export const ExecutionGraph: React.FC<ExecutionGraphProps> = ({ nodes, rawPayloa
 
         <div className="flex items-center gap-2">
           <button
+            id="btn-view-event-json"
             onClick={() => setShowJson(!showJson)}
             className="min-h-[36px] flex items-center gap-1.5 px-3 py-1.5 rounded bg-white/[0.04] hover:bg-white/[0.08] text-neutral-200 text-xs transition-colors border border-white/[0.08]"
           >

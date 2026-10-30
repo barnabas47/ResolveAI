@@ -35,6 +35,8 @@ interface PhoneSimulatorProps {
   scenarioId?: string;
   onNewTraceEvent?: (event: WebhookTraceEvent) => void;
   onNewDisputeRecord?: (record: PayPalDisputeRecord) => void;
+  externalInputText?: string;
+  onExternalSend?: (text: string) => void;
 }
 
 export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
@@ -47,6 +49,8 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
   scenarioId = 'size_exchange',
   onNewTraceEvent,
   onNewDisputeRecord,
+  externalInputText,
+  onExternalSend,
 }) => {
   const [inputText, setInputText] = useState('');
   const [customMessages, setCustomMessages] = useState<ChatMessage[]>([]);
@@ -55,6 +59,20 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
   const [activeBadge, setActiveBadge] = useState(inspectionBadge);
   const [showImagePicker, setShowImagePicker] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Sync external typing text when walkthrough is active
+  React.useEffect(() => {
+    if (externalInputText !== undefined) {
+      setInputText(externalInputText);
+    }
+  }, [externalInputText]);
+
+  // Support external send triggers from walkthrough
+  React.useEffect(() => {
+    if (onExternalSend) {
+      // register handler or listen
+    }
+  }, [onExternalSend]);
 
   // Sync image if prop changes
   React.useEffect(() => {
@@ -164,42 +182,63 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
             </div>
           </div>
 
-          {/* Omnichannel Channel Switcher Tab Strip */}
+          {/* Omnichannel Channel Switcher Tab Strip with Spring Physics */}
           <div className="px-3 pt-2 pb-2 bg-[#14141a] flex items-center gap-1.5 shrink-0">
             <button
               onClick={() => onChannelChange('whatsapp')}
-              className={`flex-1 min-h-[38px] py-1.5 px-2 rounded-lg text-xs font-medium text-center flex items-center justify-center gap-1.5 transition-colors ${
+              className={`relative flex-1 min-h-[38px] py-1.5 px-2 rounded-lg text-xs font-medium text-center flex items-center justify-center gap-1.5 transition-colors ${
                 currentChannel === 'whatsapp'
-                  ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
-                  : 'bg-white/[0.03] text-neutral-400 hover:text-white border border-transparent'
+                  ? 'text-emerald-300 font-semibold'
+                  : 'text-neutral-400 hover:text-white'
               }`}
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-              <span>WhatsApp</span>
+              {currentChannel === 'whatsapp' && (
+                <motion.div
+                  layoutId="phoneChannelPill"
+                  className="absolute inset-0 rounded-lg bg-emerald-500/20 border border-emerald-500/40 -z-0"
+                  transition={{ type: 'spring', stiffness: 380, damping: 28 }}
+                />
+              )}
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 relative z-10" />
+              <span className="relative z-10">WhatsApp</span>
             </button>
 
             <button
               onClick={() => onChannelChange('rcs')}
-              className={`flex-1 min-h-[38px] py-1.5 px-2 rounded-lg text-xs font-medium text-center flex items-center justify-center gap-1.5 transition-colors ${
+              className={`relative flex-1 min-h-[38px] py-1.5 px-2 rounded-lg text-xs font-medium text-center flex items-center justify-center gap-1.5 transition-colors ${
                 currentChannel === 'rcs'
-                  ? 'bg-cyan-500/20 text-cyan-200 border border-cyan-500/40'
-                  : 'bg-white/[0.03] text-neutral-400 hover:text-white border border-transparent'
+                  ? 'text-cyan-200 font-semibold'
+                  : 'text-neutral-400 hover:text-white'
               }`}
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-              <span>RCS Card</span>
+              {currentChannel === 'rcs' && (
+                <motion.div
+                  layoutId="phoneChannelPill"
+                  className="absolute inset-0 rounded-lg bg-cyan-500/20 border border-cyan-500/40 -z-0"
+                  transition={{ type: 'spring', stiffness: 380, damping: 28 }}
+                />
+              )}
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 relative z-10" />
+              <span className="relative z-10">RCS Card</span>
             </button>
 
             <button
               onClick={() => onChannelChange('sms')}
-              className={`flex-1 min-h-[38px] py-1.5 px-2 rounded-lg text-xs font-medium text-center flex items-center justify-center gap-1.5 transition-colors ${
+              className={`relative flex-1 min-h-[38px] py-1.5 px-2 rounded-lg text-xs font-medium text-center flex items-center justify-center gap-1.5 transition-colors ${
                 currentChannel === 'sms'
-                  ? 'bg-[#00dce6]/20 text-[#00dce6] border border-[#00dce6]/40'
-                  : 'bg-white/[0.03] text-neutral-400 hover:text-white border border-transparent'
+                  ? 'text-[#00dce6] font-semibold'
+                  : 'text-neutral-400 hover:text-white'
               }`}
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00dce6]" />
-              <span>SMS Alert</span>
+              {currentChannel === 'sms' && (
+                <motion.div
+                  layoutId="phoneChannelPill"
+                  className="absolute inset-0 rounded-lg bg-[#00dce6]/20 border border-[#00dce6]/40 -z-0"
+                  transition={{ type: 'spring', stiffness: 380, damping: 28 }}
+                />
+              )}
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00dce6] relative z-10" />
+              <span className="relative z-10">SMS Alert</span>
             </button>
           </div>
 
@@ -280,7 +319,7 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
                             alt="Inspection subject"
                             className="w-full h-32 object-cover"
                           />
-                          <div className="absolute bottom-1.5 left-1.5 px-2 py-0.5 rounded bg-black/90 text-xs text-[#00dce6] border border-[#00dce6]/30 flex items-center gap-1">
+                          <div data-ui="inspection-badge" className="absolute bottom-1.5 left-1.5 px-2 py-0.5 rounded bg-black/90 text-xs text-[#00dce6] border border-[#00dce6]/30 flex items-center gap-1 shadow-lg">
                             <CheckCircle2 className="w-3 h-3 text-[#00dce6]" />
                             <span>{msg.imageBadge || activeBadge}</span>
                           </div>
@@ -329,8 +368,9 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
                           <div className="space-y-2 pt-1">
                             {msg.card.primaryCta && (
                               <button
+                                data-ui="phone-cta-btn"
                                 onClick={() => onActionClick(msg.card?.actionType || 'confirm')}
-                                className="w-full min-h-[44px] py-2.5 px-4 rounded-xl bg-[#00f2fe] hover:bg-[#00dce6] text-[#00373a] font-semibold text-xs transition-[transform,background-color] flex items-center justify-center gap-2 active:scale-[0.98]"
+                                className="w-full min-h-[44px] py-2.5 px-4 rounded-xl bg-[#00dce6] hover:bg-[#00f2fe] text-[#00373a] font-semibold text-xs transition-[transform,background-color] flex items-center justify-center gap-2 active:scale-[0.98] shadow-[0_0_15px_rgba(0,220,230,0.2)]"
                               >
                                 <CheckCircle2 className="w-4 h-4" />
                                 <span>{msg.card.primaryCta}</span>
@@ -339,6 +379,7 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
 
                             {msg.card.secondaryCta && (
                               <button
+                                data-ui="phone-secondary-cta"
                                 onClick={() => onActionClick('switch_rcs')}
                                 className="w-full min-h-[40px] py-2 px-3 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] text-cyan-300 text-[11px] transition-[transform,background-color] flex items-center justify-center gap-1.5 border border-white/[0.06] active:scale-[0.98]"
                               >
@@ -489,17 +530,19 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
               <Plus className="w-4 h-4" />
             </button>
             <input
+              id="phone-chat-input"
               type="text"
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               placeholder="Ask anything (e.g. size 10.5, damage, policy)..."
               disabled={isThinking}
-              className="flex-1 min-h-[40px] bg-black/50 border border-white/[0.08] rounded-full px-4 py-2 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-[#00f2fe]/50 disabled:opacity-50"
+              className="flex-1 min-h-[40px] bg-black/50 border border-white/[0.08] rounded-full px-4 py-2 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-[#00dce6]/50 disabled:opacity-50 transition-colors"
             />
             <button
+              id="phone-send-btn"
               type="submit"
               disabled={isThinking || !inputText.trim()}
-              className="w-10 h-10 rounded-full bg-[#00f2fe] text-[#00373a] flex items-center justify-center hover:bg-[#00dce6] transition-[transform,background-color] active:scale-95 disabled:opacity-40"
+              className="w-10 h-10 rounded-full bg-[#00dce6] text-[#00373a] flex items-center justify-center hover:bg-[#00f2fe] transition-[transform,background-color] active:scale-95 disabled:opacity-40 shadow-[0_0_15px_rgba(0,220,230,0.2)]"
             >
               <Send className="w-4 h-4" />
             </button>

@@ -230,7 +230,7 @@ export const AGGridDisputeLedger: React.FC<AGGridDisputeLedgerProps> = ({
   ).length;
 
   return (
-    <div className="space-y-4">
+    <div id="ag-grid-dispute-section" className="space-y-4">
       {/* Grid Controls Bar */}
       <div className="rounded-xl bg-[#13141a] border border-white/[0.08] p-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
         <div className="flex items-center gap-2.5">

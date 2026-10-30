@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { TrendingUp, ShieldCheck, Zap, DollarSign } from 'lucide-react';
 
 interface BentoMetricsProps {
@@ -7,9 +8,12 @@ interface BentoMetricsProps {
 
 export const BentoMetrics: React.FC<BentoMetricsProps> = ({ scenarioId }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+    <div id="bento-metrics-section" className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
       {/* Card 1: Autonomous Dispute Resolution */}
-      <div className="rounded-xl bg-[#121319] border border-white/[0.08] p-5 flex flex-col justify-between hover:border-white/[0.16] transition-colors">
+      <motion.div
+        whileHover={{ y: -3, transition: { duration: 0.2 } }}
+        className="rounded-xl bg-[#121319] border border-white/[0.08] p-5 flex flex-col justify-between hover:border-[#00dce6]/40 transition-colors shadow-sm"
+      >
         <div className="flex items-center justify-between gap-2">
           <span className="text-xs font-medium text-neutral-300">
             Resolution Rate
@@ -38,10 +42,13 @@ export const BentoMetrics: React.FC<BentoMetricsProps> = ({ scenarioId }) => {
         <div className="w-full bg-white/[0.06] rounded-full h-1 overflow-hidden">
           <div className="bg-[#00dce6] h-full rounded-full" style={{ width: '94%' }} />
         </div>
-      </div>
+      </motion.div>
 
       {/* Card 2: PayPal Dispute Fees Saved */}
-      <div className="rounded-xl bg-[#121319] border border-white/[0.08] p-5 flex flex-col justify-between hover:border-white/[0.16] transition-colors">
+      <motion.div
+        whileHover={{ y: -3, transition: { duration: 0.2 } }}
+        className="rounded-xl bg-[#121319] border border-white/[0.08] p-5 flex flex-col justify-between hover:border-emerald-500/40 transition-colors shadow-sm"
+      >
         <div className="flex items-center justify-between gap-2">
           <span className="text-xs font-medium text-neutral-300">
             Dispute Fees Saved
@@ -69,10 +76,13 @@ export const BentoMetrics: React.FC<BentoMetricsProps> = ({ scenarioId }) => {
         <div className="w-full bg-white/[0.06] rounded-full h-1 overflow-hidden">
           <div className="bg-emerald-400 h-full rounded-full" style={{ width: '82%' }} />
         </div>
-      </div>
+      </motion.div>
 
       {/* Card 3: Adjudication Latency */}
-      <div className="rounded-xl bg-[#121319] border border-white/[0.08] p-5 flex flex-col justify-between hover:border-white/[0.16] transition-colors">
+      <motion.div
+        whileHover={{ y: -3, transition: { duration: 0.2 } }}
+        className="rounded-xl bg-[#121319] border border-white/[0.08] p-5 flex flex-col justify-between hover:border-cyan-400/40 transition-colors shadow-sm"
+      >
         <div className="flex items-center justify-between gap-2">
           <span className="text-xs font-medium text-neutral-300">
             Inference Latency
@@ -100,10 +110,13 @@ export const BentoMetrics: React.FC<BentoMetricsProps> = ({ scenarioId }) => {
         <div className="w-full bg-white/[0.06] rounded-full h-1 overflow-hidden">
           <div className="bg-cyan-400 h-full rounded-full" style={{ width: '68%' }} />
         </div>
-      </div>
+      </motion.div>
 
       {/* Card 4: Handling Cost per Resolution */}
-      <div className="rounded-xl bg-[#121319] border border-white/[0.08] p-5 flex flex-col justify-between hover:border-white/[0.16] transition-colors">
+      <motion.div
+        whileHover={{ y: -3, transition: { duration: 0.2 } }}
+        className="rounded-xl bg-[#121319] border border-white/[0.08] p-5 flex flex-col justify-between hover:border-emerald-500/40 transition-colors shadow-sm"
+      >
         <div className="flex items-center justify-between gap-2">
           <span className="text-xs font-medium text-neutral-300">
             Unit Resolution Cost
@@ -131,7 +144,7 @@ export const BentoMetrics: React.FC<BentoMetricsProps> = ({ scenarioId }) => {
         <div className="w-full bg-white/[0.06] rounded-full h-1 overflow-hidden">
           <div className="bg-[#00dce6] h-full rounded-full" style={{ width: '99%' }} />
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
